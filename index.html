@@ -52,7 +52,6 @@ button {
   color: #ff9ae6;
 }
 
-/* HEART */
 .heart {
   position: absolute;
   width: 20px;
@@ -85,13 +84,9 @@ button {
 <div class="content">
   <p>
     Em bé à,<br><br>
-
     Vậy là chúng mình đã đi cùng nhau gần 12 năm rồi...<br>
-    Từ những ngày đầu còn vụng về, đến những lúc cười ngốc nghếch với nhau,<br>
-    rồi cả những lần giận dỗi tưởng như không thể chịu nổi...<br><br>
-
+    Có những lúc vui, có những lúc buồn, có cả những lần giận dỗi...<br><br>
     Nhưng cuối cùng, chúng mình vẫn ở đây — vẫn chọn nhau 💖<br><br>
-
     Ngày 05/04/2026 này, tròn 12 năm.<br>
     Và anh vẫn còn một câu hỏi muốn hỏi em...
   </p>
@@ -103,12 +98,13 @@ button {
   <div class="countdown" id="countdown"></div>
 </div>
 
-<!-- NHẠC -->
-<audio id="music" src="music.mp3"></audio>
+<!-- YOUTUBE NHẠC -->
+<iframe id="ytplayer" width="0" height="0"
+src="https://www.youtube.com/embed/OuNo8Tkb3lI?enablejsapi=1"
+frameborder="0" allow="autoplay"></iframe>
 
 <script>
 
-// 💥 TIM NỔ
 function explodeHearts() {
   for (let i = 0; i < 35; i++) {
     const heart = document.createElement('div');
@@ -132,7 +128,6 @@ function explodeHearts() {
   }
 }
 
-// 💌 HIỆN LỜI TỎ TÌNH + NHẠC
 function showLove() {
   const msg = document.getElementById('msg');
 
@@ -145,11 +140,11 @@ function showLove() {
 
   explodeHearts();
 
-  const music = document.getElementById('music');
-  music.play();
+  // 👉 LOAD NHẠC SAU KHI CLICK (CHẮC CHẮN CHẠY)
+  const player = document.getElementById('ytplayer');
+  player.src = "https://www.youtube.com/embed/OuNo8Tkb3lI?autoplay=1&loop=1&playlist=OuNo8Tkb3lI";
 }
 
-// ⏳ COUNTDOWN
 const targetDate = new Date('2026-04-05T00:00:00');
 
 function updateCountdown() {
