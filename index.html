@@ -1,158 +1,179 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <title>Gửi Em Bé 💖</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: radial-gradient(circle at top, #1a001f, #000000);
-      overflow: hidden;
-      color: #ffd6f9;
-      text-align: center;
-    }
+<meta charset="UTF-8">
+<title>Gửi em bé 💖</title>
 
-    h1 { margin-top: 30px; }
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: radial-gradient(circle at top, #1a001f, #000000);
+  color: #ffd6f9;
+  text-align: center;
+  overflow: hidden;
+}
 
-    img {
-      width: 250px;
-      border-radius: 20px;
-      margin-top: 10px;
-      box-shadow: 0 0 20px rgba(255, 0, 100, 0.6);
-    }
+h1 { margin-top: 30px; }
 
-    .content {
-      width: 70%;
-      margin: auto;
-      line-height: 1.6;
-    }
+img {
+  width: 260px;
+  border-radius: 20px;
+  margin-top: 10px;
+  box-shadow: 0 0 25px rgba(255, 0, 120, 0.6);
+}
 
-    .heart {
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background: pink;
-      transform: rotate(45deg);
-    }
+.content {
+  width: 70%;
+  margin: auto;
+  line-height: 1.6;
+}
 
-    .heart::before,
-    .heart::after {
-      content: '';
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background: pink;
-      border-radius: 50%;
-    }
+button {
+  padding: 12px 22px;
+  border-radius: 25px;
+  border: none;
+  background: #ff4b91;
+  color: white;
+  cursor: pointer;
+  margin-top: 20px;
+  font-size: 16px;
+}
 
-    .heart::before { top: -10px; }
-    .heart::after { left: -10px; }
+.message {
+  margin-top: 25px;
+  font-size: 20px;
+  min-height: 50px;
+}
 
-    button {
-      padding: 12px 20px;
-      border-radius: 20px;
-      border: none;
-      background: #ff4b91;
-      color: white;
-      cursor: pointer;
-      margin-top: 15px;
-    }
+.countdown {
+  margin-top: 15px;
+  font-size: 18px;
+  color: #ff9ae6;
+}
 
-    .message {
-      margin-top: 20px;
-      font-size: 18px;
-      min-height: 40px;
-    }
+/* HEART */
+.heart {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: pink;
+  transform: rotate(45deg);
+}
 
-    .countdown {
-      margin-top: 10px;
-      font-size: 20px;
-      color: #ff9ae6;
-    }
-  </style>
+.heart::before,
+.heart::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: pink;
+  border-radius: 50%;
+}
+
+.heart::before { top: -10px; }
+.heart::after { left: -10px; }
+</style>
+
 </head>
 <body>
 
-  <h1>Gửi em bé 🐰🍓</h1>
+<h1>Gửi em bé 🐰🍓</h1>
 
-  <img src="image.jpg" alt="tụi mình">
+<img src="image.jpg" alt="tụi mình">
 
-  <div class="content">
-    <p>
-      Em bé à,
-      vậy là chúng mình đã đi cùng nhau gần 12 năm rồi...
-      
-      Có những lúc vui, có những lúc buồn, có cả những lần giận dỗi,
-      nhưng cuối cùng, chúng mình vẫn ở đây — cạnh nhau.
-      
-      Ngày 05/04/2026, tròn 12 năm.
-      Anh chỉ muốn hỏi em một điều thôi...
-    </p>
+<div class="content">
+  <p>
+    Em bé à,<br><br>
 
-    <button onclick="showQuestion()">Bấm vào đây nè 💖</button>
+    Vậy là chúng mình đã đi cùng nhau gần 12 năm rồi...<br>
+    Từ những ngày đầu còn vụng về, đến những lúc cười ngốc nghếch với nhau,<br>
+    rồi cả những lần giận dỗi tưởng như không thể chịu nổi...<br><br>
 
-    <div class="message" id="msg"></div>
+    Nhưng cuối cùng, chúng mình vẫn ở đây — vẫn chọn nhau 💖<br><br>
 
-    <div class="countdown" id="countdown"></div>
-  </div>
+    Ngày 05/04/2026 này, tròn 12 năm.<br>
+    Và anh vẫn còn một câu hỏi muốn hỏi em...
+  </p>
 
-  <!-- Nhạc nền -->
-  <!-- Nhạc từ Zing MP3 -->
-  <iframe src="https://zingmp3.vn/embed/song/ZWB0Z8WZ?start=false" width="0" height="0" frameborder="0" allow="autoplay"></iframe>
+  <button onclick="showLove()">Bấm vào đây nè em bé 💖</button>
 
-  <script>
-    function explodeHearts() {
-      for(let i=0;i<30;i++){
-        const heart = document.createElement('div');
-        heart.className = 'heart';
-        heart.style.left = window.innerWidth/2 + 'px';
-        heart.style.top = window.innerHeight/2 + 'px';
-        document.body.appendChild(heart);
+  <div class="message" id="msg"></div>
 
-        const x = (Math.random()-0.5)*600;
-        const y = (Math.random()-0.5)*600;
+  <div class="countdown" id="countdown"></div>
+</div>
 
-        heart.animate([
-          { transform: 'translate(0,0) rotate(45deg)', opacity:1 },
-          { transform: `translate(${x}px, ${y}px) rotate(45deg)`, opacity:0 }
-        ], {
-          duration: 1000,
-          easing: 'ease-out'
-        });
+<!-- NHẠC -->
+<audio id="music" src="music.mp3"></audio>
 
-        setTimeout(()=>heart.remove(),1000);
-      }
-    }
+<script>
 
-    function showQuestion(){
-      const msg = document.getElementById('msg');
-      msg.innerHTML = "<b>Em bé có muốn nắm tay anh thêm thật nhiều năm nữa không? 💖</b>";
-      explodeHearts();
-    }
+// 💥 TIM NỔ
+function explodeHearts() {
+  for (let i = 0; i < 35; i++) {
+    const heart = document.createElement('div');
+    heart.className = 'heart';
+    heart.style.left = window.innerWidth / 2 + 'px';
+    heart.style.top = window.innerHeight / 2 + 'px';
+    document.body.appendChild(heart);
 
-    // Countdown
-    const targetDate = new Date('2026-04-05T00:00:00');
-    function updateCountdown(){
-      const now = new Date();
-      const diff = targetDate - now;
+    const x = (Math.random() - 0.5) * 800;
+    const y = (Math.random() - 0.5) * 800;
 
-      if(diff <= 0){
-        document.getElementById('countdown').innerText = "Hôm nay là ngày của tụi mình 💖";
-        return;
-      }
+    heart.animate([
+      { transform: 'translate(0,0) rotate(45deg)', opacity: 1 },
+      { transform: `translate(${x}px, ${y}px) rotate(45deg)`, opacity: 0 }
+    ], {
+      duration: 1200,
+      easing: 'ease-out'
+    });
 
-      const days = Math.floor(diff / (1000*60*60*24));
-      const hours = Math.floor((diff / (1000*60*60)) % 24);
-      const mins = Math.floor((diff / (1000*60)) % 60);
+    setTimeout(() => heart.remove(), 1200);
+  }
+}
 
-      document.getElementById('countdown').innerText =
-        `Còn ${days} ngày ${hours} giờ ${mins} phút nữa tới ngày của tụi mình 💕`;
-    }
+// 💌 HIỆN LỜI TỎ TÌNH + NHẠC
+function showLove() {
+  const msg = document.getElementById('msg');
 
-    setInterval(updateCountdown,1000);
-    updateCountdown();
-  </script>
+  msg.innerHTML = `
+    <b>
+    Em bé có muốn nắm tay anh thêm thật nhiều năm nữa không? 💖<br><br>
+    Hay là… mình đi với nhau luôn hết phần đời còn lại nha?
+    </b>
+  `;
+
+  explodeHearts();
+
+  const music = document.getElementById('music');
+  music.play();
+}
+
+// ⏳ COUNTDOWN
+const targetDate = new Date('2026-04-05T00:00:00');
+
+function updateCountdown() {
+  const now = new Date();
+  const diff = targetDate - now;
+
+  if (diff <= 0) {
+    document.getElementById('countdown').innerText =
+      "Hôm nay là ngày của tụi mình 💖";
+    return;
+  }
+
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+  const mins = Math.floor((diff / (1000 * 60)) % 60);
+
+  document.getElementById('countdown').innerText =
+    `Còn ${days} ngày ${hours} giờ ${mins} phút nữa tới ngày của tụi mình 💕`;
+}
+
+setInterval(updateCountdown, 1000);
+updateCountdown();
+
+</script>
 
 </body>
 </html>
