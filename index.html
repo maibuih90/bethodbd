@@ -2,7 +2,7 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>Cảnh báo</title>
+    <title>Chặn anh</title>
     <style>
         body {
             margin: 0;
@@ -10,23 +10,52 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(45deg, red, orange, yellow, purple);
-            background-size: 400% 400%;
-            animation: gradientBG 5s ease infinite;
+            background: radial-gradient(circle at center, #111 0%, #000 100%);
+            overflow: hidden;
+            font-family: Arial, sans-serif;
         }
 
         h1 {
-            font-size: 60px;
-            color: white;
+            font-size: 70px;
+            color: #bbb;
             text-align: center;
             font-weight: bold;
-            text-shadow: 4px 4px 10px black;
+            letter-spacing: 3px;
+            text-shadow: 
+                0 0 5px #fff,
+                0 0 10px #888,
+                0 0 20px #444;
+            animation: flicker 2s infinite;
         }
 
-        @keyframes gradientBG {
-            0% {background-position: 0% 50%;}
-            50% {background-position: 100% 50%;}
-            100% {background-position: 0% 50%;}
+        @keyframes flicker {
+            0%, 18%, 22%, 25%, 53%, 57%, 100% {
+                opacity: 1;
+            }
+            20%, 24%, 55% {
+                opacity: 0.3;
+            }
+        }
+
+        /* hiệu ứng sương mờ nhẹ */
+        body::after {
+            content: "";
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(255,255,255,0.02),
+                rgba(255,255,255,0.02) 1px,
+                transparent 1px,
+                transparent 3px
+            );
+            animation: move 10s linear infinite;
+        }
+
+        @keyframes move {
+            from { transform: translateY(0); }
+            to { transform: translateY(-50px); }
         }
     </style>
 </head>
