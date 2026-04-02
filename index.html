@@ -1,65 +1,231 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <title>Chặn anh</title>
-    <style>
-        body {
-            margin: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: radial-gradient(circle at center, #111 0%, #000 100%);
-            overflow: hidden;
-            font-family: Arial, sans-serif;
-        }
+<meta charset="UTF-8">
+<title>Gửi em bé 💖</title>
 
-        h1 {
-            font-size: 70px;
-            color: #bbb;
-            text-align: center;
-            font-weight: bold;
-            letter-spacing: 3px;
-            text-shadow: 
-                0 0 5px #fff,
-                0 0 10px #888,
-                0 0 20px #444;
-            animation: flicker 2s infinite;
-        }
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: radial-gradient(circle at top, #1a001f, #000000);
+  color: #ffd6f9;
+  text-align: center;
+  overflow: hidden;
+  transition: 1s;
+}
 
-        @keyframes flicker {
-            0%, 18%, 22%, 25%, 53%, 57%, 100% {
-                opacity: 1;
-            }
-            20%, 24%, 55% {
-                opacity: 0.3;
-            }
-        }
+h1 { margin-top: 30px; }
 
-        /* hiệu ứng sương mờ nhẹ */
-        body::after {
-            content: "";
-            position: absolute;
-            width: 200%;
-            height: 200%;
-            background: repeating-linear-gradient(
-                0deg,
-                rgba(255,255,255,0.02),
-                rgba(255,255,255,0.02) 1px,
-                transparent 1px,
-                transparent 3px
-            );
-            animation: move 10s linear infinite;
-        }
+img {
+  width: 260px;
+  border-radius: 20px;
+  margin-top: 10px;
+  box-shadow: 0 0 25px rgba(255, 0, 120, 0.6);
+}
 
-        @keyframes move {
-            from { transform: translateY(0); }
-            to { transform: translateY(-50px); }
-        }
-    </style>
+.content {
+  width: 70%;
+  margin: auto;
+  line-height: 1.6;
+}
+
+button {
+  padding: 12px 22px;
+  border-radius: 25px;
+  border: none;
+  background: #ff4b91;
+  color: white;
+  cursor: pointer;
+  margin-top: 20px;
+  font-size: 16px;
+}
+
+.message {
+  margin-top: 25px;
+  font-size: 20px;
+  min-height: 50px;
+}
+
+.countdown {
+  margin-top: 15px;
+  font-size: 18px;
+  color: #ff9ae6;
+}
+
+.heart {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: pink;
+  transform: rotate(45deg);
+}
+
+.heart::before,
+.heart::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: pink;
+  border-radius: 50%;
+}
+
+.heart::before { top: -10px; }
+.heart::after { left: -10px; }
+
+.firework {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  pointer-events: none;
+}
+</style>
+
 </head>
 <body>
-    <h1>EM SẼ PHẢI HỐI HẬN</h1>
+
+<h1>Gửi em bé 🐰🍓</h1>
+
+<img src="image.jpg" alt="tụi mình">
+
+<div class="content">
+  <p>
+    Em bé à,<br><br>
+    Vậy là chúng mình đã đi cùng nhau gần 12 năm rồi...<br>
+    Có những lúc vui, có những lúc buồn...<br><br>
+    Nhưng cuối cùng, chúng mình vẫn chọn nhau 💖<br><br>
+    Ngày 05/04/2026 này, tròn 12 năm.<br>
+    Và anh vẫn còn một câu hỏi...
+  </p>
+
+  <button onclick="showLove()">Bấm vào đây nè em bé 💖</button>
+
+  <div class="message" id="msg"></div>
+  <div class="countdown" id="countdown"></div>
+</div>
+
+<iframe id="ytplayer" width="0" height="0"
+src="https://www.youtube.com/embed/OuNo8Tkb3lI?enablejsapi=1"
+frameborder="0" allow="autoplay"></iframe>
+
+<script>
+
+// 💖 tim nổ
+function explodeHearts() {
+  for (let i = 0; i < 40; i++) {
+    const heart = document.createElement('div');
+    heart.className = 'heart';
+    heart.style.left = window.innerWidth / 2 + 'px';
+    heart.style.top = window.innerHeight / 2 + 'px';
+    document.body.appendChild(heart);
+
+    const x = (Math.random() - 0.5) * 800;
+    const y = (Math.random() - 0.5) * 800;
+
+    heart.animate([
+      { transform: 'translate(0,0) rotate(45deg)', opacity: 1 },
+      { transform: `translate(${x}px, ${y}px) rotate(45deg)`, opacity: 0 }
+    ], { duration: 1200 });
+
+    setTimeout(() => heart.remove(), 1200);
+  }
+}
+
+// 🎆 pháo hoa
+function launchFireworks() {
+  for (let i = 0; i < 80; i++) {
+    const dot = document.createElement('div');
+    dot.className = 'firework';
+
+    const colors = ['#ff4b91', '#ffd6f9', '#ff9ae6', '#ffffff'];
+    dot.style.background = colors[Math.floor(Math.random() * colors.length)];
+
+    dot.style.left = window.innerWidth / 2 + 'px';
+    dot.style.top = window.innerHeight / 2 + 'px';
+
+    document.body.appendChild(dot);
+
+    const x = (Math.random() - 0.5) * 1000;
+    const y = (Math.random() - 0.5) * 1000;
+
+    dot.animate([
+      { transform: 'translate(0,0)', opacity: 1 },
+      { transform: `translate(${x}px, ${y}px)`, opacity: 0 }
+    ], { duration: 1500 });
+
+    setTimeout(() => dot.remove(), 1500);
+  }
+}
+
+// 💌 khi bấm nút
+function showLove() {
+  document.getElementById('msg').innerHTML = `
+    <b>
+    Em bé có muốn nắm tay anh thêm thật nhiều năm nữa không? 💖<br><br>
+    Hay là… mình đi với nhau luôn hết phần đời còn lại nha?
+    </b>
+  `;
+
+  explodeHearts();
+
+  document.getElementById('ytplayer').src =
+    "https://www.youtube.com/embed/g7UPuFPzQVk?autoplay=1&loop=1&playlist=g7UPuFPzQVk";
+}
+
+// ⏳ countdown + trigger
+const targetDate = new Date('2026-04-05T00:00:00');
+let triggered = false;
+
+function updateCountdown() {
+  const now = new Date();
+  const diff = targetDate - now;
+
+  if (diff <= 0) {
+    document.getElementById('countdown').innerText =
+      "Hôm nay là ngày của tụi mình 💖";
+
+    if (!triggered) {
+      triggered = true;
+
+      // 💥 hiệu ứng lớn
+      for (let i = 0; i < 6; i++) {
+        setTimeout(() => {
+          launchFireworks();
+          explodeHearts();
+        }, i * 500);
+      }
+
+      // 🌈 nền sáng
+      document.body.style.background =
+        "radial-gradient(circle, #ff4b91, #1a001f, #000000)";
+
+      // 💌 lời đặc biệt
+      document.getElementById('msg').innerHTML = `
+        <b>
+        💖 12 năm rồi đó 💖<br><br>
+        Và anh vẫn chọn em — hôm nay và mãi mãi.<br><br>
+        Làm vợ anh nhé? 💍
+        </b>
+      `;
+    }
+
+    return;
+  }
+
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+  const mins = Math.floor((diff / (1000 * 60)) % 60);
+
+  document.getElementById('countdown').innerText =
+    `Còn ${days} ngày ${hours} giờ ${mins} phút nữa 💕`;
+}
+
+setInterval(updateCountdown, 1000);
+updateCountdown();
+
+</script>
+
 </body>
 </html>
